@@ -9,7 +9,7 @@ c. Predict API to give image and get results
 2. In Terminal Navigate to where Project is cloned
 3. Run Service: python imageclassifierservice.py
 4. Open another terminal window
-5. curl -X POST -F image=@dog.jpg 'http://localhost:5000/predict'
+5. curl -X POST -F image=@lettuce.jpg 'http://localhost:5000/predict'
 
 # Result For Lettuce Image:
 curl -X POST -F image=@lettuce.jpg 'http://localhost:5000/predict'
