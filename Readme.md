@@ -1,10 +1,10 @@
-Service To Do Basic Image Classification using keras and flask
+#Service To Do Basic Image Classification using keras and flask
 
 a. PreTrained Model Used like ResNet50 and InceptionV3
 b. Flask Service To Wrap the Model and load it
 c. Predict API to give image and get results
 
-Sample Test
+#Sample Test
 1. Git Clone Repo
 2. In Terminal Navigate to where Project is cloned
 3. Run Service: python imageclassifierservice.py
