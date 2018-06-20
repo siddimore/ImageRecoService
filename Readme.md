@@ -11,29 +11,30 @@ c. Predict API to give image and get results
 4. Open another terminal window
 5. curl -X POST -F image=@dog.jpg 'http://localhost:5000/predict'
 
-# Result For Dog Image:
+# Result For Lettuce Image:
+curl -X POST -F image=@lettuce.jpg 'http://localhost:5000/predict'
 {
   "predictions": [
     {
-      "label": "beagle",
-      "probablity": 0.9830568432807922
-    },
+      "label": "head_cabbage", 
+      "probablity": 0.9254592657089233
+    }, 
     {
-      "label": "pot",
-      "probablity": 0.004184032324701548
-    },
+      "label": "ice_cream", 
+      "probablity": 0.023381194099783897
+    }, 
     {
-      "label": "Walker_hound",
-      "probablity": 0.0036015023943036795
-    },
+      "label": "buckeye", 
+      "probablity": 0.010577011853456497
+    }, 
     {
-      "label": "bluetick",
-      "probablity": 0.0016072390135377645
-    },
+      "label": "cauliflower", 
+      "probablity": 0.009751381352543831
+    }, 
     {
-      "label": "Brittany_spaniel",
-      "probablity": 0.0010771512752398849
+      "label": "pot", 
+      "probablity": 0.006540040019899607
     }
-  ],
+  ], 
   "success": true
 }
