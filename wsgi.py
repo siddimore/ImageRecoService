@@ -1,3 +1,5 @@
-from imageclassifierservice import imageclassifierservice as application
+from imageclassifierservice import app
 
-gunicorn wsgi:imageclassifierservice
+
+if __name__ == "__main__":
+    app.run()
