@@ -1,1 +1,1 @@
-web: gunicorn app:lettucerecoservice
+web: gunicorn app:imageclassifierservice
