@@ -1,1 +1,1 @@
-web: gunicorn app:imageclassifierservice
+web: gunicorn wsgi:application --log-file -
