@@ -31,6 +31,11 @@ def prepare_image(image, target):
 
     return image
 
+@app.route('/')
+def homepage():
+    return """Welcome To LettuceRecoService"""
+
+
 @app.route("/predict", methods=["POST"])
 def predict():
 
