@@ -17,6 +17,7 @@ def load_model():
     global model
     # model = InceptionV3(weights = "imagenet")
     model = ResNet50(weights = "imagenet")
+    print(model.summary())
 
 
 def prepare_image(image, target):
@@ -51,8 +52,7 @@ def predict():
 
             image = prepare_image(image, target=(224,224))
 
-            # classify image and init list of predictions to returned
-            print(model.summary())
+            # classify image and init list of predictions to return
             preds = model.predict(image)
             results = imagenet_utils.decode_predictions(preds)
 
