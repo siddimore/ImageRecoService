@@ -1,0 +1,3 @@
+from imageclassifierservice import imageclassifierservice as application
+
+gunicorn wsgi:imageclassifierservice
