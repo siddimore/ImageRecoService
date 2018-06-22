@@ -4,3 +4,4 @@ Pillow==2.9.0
 numpy==1.13.3
 gunicorn==17.5
 tensorflow==1.4.0
+h5py==2.7.1
