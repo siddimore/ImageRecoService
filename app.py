@@ -52,6 +52,7 @@ def predict():
             image = prepare_image(image, target=(224,224))
 
             # classify image and init list of predictions to returned
+            print(model.summary())
             preds = model.predict(image)
             results = imagenet_utils.decode_predictions(preds)
 
