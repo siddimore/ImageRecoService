@@ -34,6 +34,7 @@ def prepare_image(image, target):
 
 @app.route('/')
 def homepage():
+    load_model()
     return """Welcome To LettuceRecoService"""
 
 
