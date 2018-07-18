@@ -4,6 +4,7 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
 from keras.callbacks import ModelCheckpoint
 from keras.constraints import max_norm
+from keras.optimizers import Adam
 
 
 dim = 299
@@ -34,8 +35,10 @@ model.add(Activation('softmax'))  # softmax the output within the range of (0 to
 
 #  This compiles the model architecture and the necessary functions that we
 #  categorical crossentropy is the loss function for classification problems with more than 2 classes
+adamOptimizer=Adam(lr=0.0001)
 model.compile(loss='categorical_crossentropy',
-              optimizer='rmsprop',  # a very nice optimization function with an adaptable learning rate
+              optimizer = adamOptimizer,
+              # optimizer='rmsprop',  # a very nice optimization function with an adaptable learning rate
               metrics=['accuracy']) # want to see how accurate the model is (but are minimize the loss)
 
 batch_size = 16  # a batch size of 16 seemed to be optimal - high accuracy while still being quick
@@ -69,9 +72,15 @@ print(validation_generator.class_indices)  # allows us to see where the model wi
 model.fit_generator(
         train_generator,  # passes the training data through this to transform it
         steps_per_epoch=num_training_img // batch_size,  # how many times we are stepping for each epoch
-        epochs=50, 
+        epochs=50,
         validation_data=validation_generator,  # passes the validation data through this
         validation_steps=num_val_img // batch_size,
         callbacks=[ModelCheckpoint('model.h5', verbose=1, save_best_only=True)])  # save model when val_loss decreases
 
 model.summary()  # print out summary of model for testing purposes
+
+score = model.evaluate_generator(validation_generator, num_val_img // batch_size, workers=12)
+
+scores = model.predict_generator(validation_generator, num_val_img // batch_size, workers=12)
+print("Correct:", correct, " Total: ", len(validation_generator.class_indices))
+print("Loss: ", score[0], "Accuracy: ", score[1])
