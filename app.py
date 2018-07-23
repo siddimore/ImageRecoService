@@ -19,7 +19,7 @@ def load_model():
     model = ResNet50(weights = "imagenet")
     print(model.summary())
 
-
+# preprocess Step
 def prepare_image(image, target):
     if image.mode != "RGB":
         image = image.convert("RGB")
