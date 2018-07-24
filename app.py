@@ -2,6 +2,7 @@ from keras.applications import InceptionV3,ResNet50
 from keras.preprocessing.image import img_to_array
 from keras.applications import imagenet_utils
 from PIL import Image
+from yoloimage import yoloImageCrop
 import numpy as np
 import flask
 import io
@@ -29,7 +30,8 @@ def prepare_image(image, target):
     image = img_to_array(image)
     image = np.expand_dims(image, axis=0)
     image = imagenet_utils.preprocess_input(image)
-
+    image = yoloImageCrop(image)
+    
     return image
 
 @app.route('/')
