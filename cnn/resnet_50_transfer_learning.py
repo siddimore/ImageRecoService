@@ -223,20 +223,6 @@ if __name__ == '__main__':
             validation_steps=num_val_img // batch_size,
             callbacks=[ModelCheckpoint('model_resnet_transfer.h5', verbose=1, save_best_only=True)])  # save model when val_loss decreases
 
-    # Load Cifar10 data. Please implement your own load_data() module for your own dataset
-    X_train, Y_train, X_valid, Y_valid = load_cifar10_data(img_rows, img_cols)
-
-
-
-    # Start Fine-tuning
-    # model.fit(X_train, Y_train,
-    #           batch_size=batch_size,
-    #           nb_epoch=nb_epoch,
-    #           shuffle=True,
-    #           verbose=1,
-    #           validation_data=(X_valid, Y_valid),
-    #           )
-
     # Make predictions
     predictions_valid = model.predict(X_valid, batch_size=batch_size, verbose=1)
 
