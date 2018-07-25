@@ -8,9 +8,9 @@ from keras.optimizers import Adam
 
 
 dim = 299
-num_training_img = 1190 # number of training images for 17 dataset
-num_val_img = 170 # number of validation images for 17 dataset
-num_classes = 17 # Change this to 3 (Healthy Lettuece, !Healthy Lettuce, !Lettuce)
+num_training_img = 84 # number of training images for 17 dataset
+num_val_img = 25 # number of validation images for 17 dataset
+num_classes = 3 # Change this to 3 (Healthy Lettuece, !Healthy Lettuce, !Lettuce)
 
 from keras.models import Sequential
 from keras.optimizers import SGD
@@ -195,13 +195,13 @@ if __name__ == '__main__':
     test_datagen = ImageDataGenerator(rescale=1./255)
 
     train_generator = train_datagen.flow_from_directory(
-            '17_flowers/train',
+            'lettuce/train',
             target_size=(dim, dim),  # resize train image to dim * dim
             batch_size=batch_size,
             class_mode='categorical')  # class mode is categorical - list with n-classes that points to the class it is
 
     validation_generator = test_datagen.flow_from_directory(
-            '17_flowers/validation',
+            'lettuce/validation',
             target_size=(dim, dim),  # resize validation image to dim * dim
             batch_size=batch_size,
             class_mode='categorical')  # class mode is categorical - list with n-classes that points to the class it is
@@ -221,7 +221,7 @@ if __name__ == '__main__':
             epochs=50,
             validation_data=validation_generator,  # passes the validation data through this
             validation_steps=num_val_img // batch_size,
-            callbacks=[ModelCheckpoint('model_resnet_transfer.h5', verbose=1, save_best_only=True)])  # save model when val_loss decreases
+            callbacks=[ModelCheckpoint('model_resnet_transfer_lettuce.h5', verbose=1, save_best_only=True)])  # save model when val_loss decreases
 
     # Make predictions
     predictions_valid = model.predict(X_valid, batch_size=batch_size, verbose=1)

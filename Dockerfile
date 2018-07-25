@@ -1,11 +1,18 @@
 FROM ubuntu:16.04
 MAINTAINER Siddharth More <siddimore@gmail.com>
+
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E1DD270288B4E6030699E45FA1715D88E1DF1F24
+RUN echo "deb http://ppa.launchpad.net/git-core/ppa/ubuntu trusty main" > /etc/apt/sources.list.d/git.list
+
+
+
+
 RUN apt-get update
 
 ## Pyton installation ##
 RUN apt-get install -y python3.5
 ## RUN apt-get install -y python3-pip
-RUN apt-get install -y git
+RUN apt-get install -y -f git-core
 
 ## OpenCV 3.4 Installation ##
 RUN apt-get install -y build-essential cmake
