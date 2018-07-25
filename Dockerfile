@@ -4,7 +4,7 @@ RUN apt-get update
 
 ## Pyton installation ##
 RUN apt-get install -y python3.5
-RUN apt-get install -y python3-pip
+## RUN apt-get install -y python3-pip
 RUN apt-get install -y git
 
 ## OpenCV 3.4 Installation ##
